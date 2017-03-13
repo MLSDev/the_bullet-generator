@@ -21,6 +21,8 @@ class TheBulletGenerator < Rails::Generators::Base
 
   class_option :backoffice_users, type: :boolean, default: true, desc: 'Generate Backoffice users'
 
+  class_option :rspec, type: :boolean, default: true, desc: 'Generate RSpec specs'
+
   def generate_base_controller
     puts "generate base controller"
   end
