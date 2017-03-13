@@ -23,6 +23,17 @@ class TheBulletGenerator < Rails::Generators::Base
 
   class_option :rspec, type: :boolean, default: true, desc: 'Generate RSpec specs'
 
+  def copy_base_views
+    if options[:base]
+      copy_file 'app/views/api/base/index.json.erb', 'app/views/api/base/index.json.erb'
+      copy_file 'app/views/api/base/show.json.erb', 'app/views/api/base/show.json.erb'
+      copy_file 'app/views/api/base/create.json.erb', 'app/views/api/base/create.json.erb'
+      copy_file 'app/views/api/base/update.json.erb', 'app/views/api/base/update.json.erb'
+      copy_file 'app/views/api/base/errors.json.erb', 'app/views/api/base/errors.json.erb'
+      copy_file 'app/views/api/base/exception.json.erb', 'app/views/api/base/exception.json.erb'
+    end
+  end
+
   def generate_base_controller
     puts "generate base controller"
   end
