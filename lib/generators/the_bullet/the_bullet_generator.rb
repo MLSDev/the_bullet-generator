@@ -34,6 +34,27 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
+  def copy_user_model
+    if options[:base]
+      copy_file 'app/models/user.rb', 'app/models/user.rb'
+      copy_file 'app/decorators/user_decorator.rb', 'app/decorators/user_decorator.rb'
+      copy_file 'app/models/session.rb', 'app/models/session.rb'
+      copy_file 'app/decorators/session_decorator.rb', 'app/decorators/session_decorator.rb'
+      if options[:rspec]
+        copy_file 'spec/models/user_spec.rb', 'spec/models/user_spec.rb'
+        copy_file 'spec/decorators/user_decorator_spec.rb', 'spec/decorators/user_decorator_spec.rb'
+        copy_file 'spec/models/session_spec.rb', 'spec/models/session_spec.rb'
+        copy_file 'spec/decorators/session_decorator_spec.rb', 'spec/decorators/session_decorator_spec.rb'
+      end
+    end
+  end
+
+  def create_base_controller
+    if options[:base]
+      template('app/controllers/api/base_controller.rb.erb', 'app/controllers/api/base_controller.rb')
+    end
+  end
+
   def generate_base_controller
     puts "generate base controller"
   end
