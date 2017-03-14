@@ -52,6 +52,9 @@ class TheBulletGenerator < Rails::Generators::Base
   def create_base_controller
     if options[:base]
       template('app/controllers/api/base_controller.rb.erb', 'app/controllers/api/base_controller.rb')
+      if options[:rspec]
+        template('spec/controllers/api/base_controller_spec.rb.erb', 'spec/controllers/api/base_controller_spec.rb')
+      end
     end
   end
 
