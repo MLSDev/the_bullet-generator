@@ -53,6 +53,8 @@ class TheBulletGenerator < Rails::Generators::Base
     if options[:base]
       template('app/controllers/api/base_controller.rb.erb', 'app/controllers/api/base_controller.rb')
       if options[:rspec]
+        copy_file 'spec/factories/users.rb', 'spec/factories/users.rb'
+        copy_file 'spec/factories/sessions.rb', 'spec/factories/sessions.rb'
         template('spec/controllers/api/base_controller_spec.rb.erb', 'spec/controllers/api/base_controller_spec.rb')
       end
     end
