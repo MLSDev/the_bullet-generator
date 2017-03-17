@@ -122,6 +122,7 @@ class TheBulletGenerator < Rails::Generators::Base
       if options[:rspec]
         copy_file 'spec/controllers/backoffice/sign_ins_controller_spec.rb', 'spec/controllers/backoffice/sign_ins_controller_spec.rb'
         copy_file 'spec/services/backoffice/sign_in_spec.rb', 'spec/services/backoffice/sign_in_spec.rb'
+        copy_file 'spec/spec/routing/backoffice/sign_ins_routing_spec.rb', 'spec/spec/routing/backoffice/sign_ins_routing_spec.rb'
       end
     end
   end
@@ -133,6 +134,7 @@ class TheBulletGenerator < Rails::Generators::Base
       if options[:rspec]
         copy_file 'spec/controllers/backoffice/sign_outs_controller_spec.rb', 'spec/controllers/backoffice/sign_outs_controller_spec.rb'
         copy_file 'spec/services/backoffice/sign_out_spec.rb', 'spec/services/backoffice/sign_out_spec.rb'
+        copy_file 'spec/spec/routing/backoffice/sign_outs_routing_spec.rb', 'spec/spec/routing/backoffice/sign_outs_routing_spec.rb'
       end
     end
   end
@@ -146,6 +148,7 @@ class TheBulletGenerator < Rails::Generators::Base
         copy_file 'spec/models/backoffice/user_spec.rb', 'spec/models/backoffice/user_spec.rb'
         copy_file 'spec/decorators/backoffice/user_decorator_spec.rb', 'spec/decorators/backoffice/user_decorator_spec.rb'
         copy_file 'spec/controllers/backoffice/users_controller_spec.rb', 'spec/controllers/backoffice/users_controller.rb'
+        copy_file 'spec/spec/routing/backoffice/users_routing_spec.rb', 'spec/spec/routing/backoffice/users_routing_spec.rb'
       end
     end
   end
