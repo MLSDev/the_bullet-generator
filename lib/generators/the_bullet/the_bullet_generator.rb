@@ -3,6 +3,8 @@ class TheBulletGenerator < Rails::Generators::Base
 
   class_option :base, type: :boolean, default: true, desc: 'Generate base stuff. Base controller and views.'
 
+  # class_option :authentication, type: :boolean, default: true, desc: 'Add authentication'
+  #
   # class_option :sign_up, type: :boolean, default: true, desc: 'Generate user sign up feature'
   #
   # class_option :sign_in, type: :boolean, default: true, desc: 'Generate user sign in feature'
@@ -16,14 +18,14 @@ class TheBulletGenerator < Rails::Generators::Base
   # class_option :pundit, type: :boolean, default: true, desc: 'Generate pundit stuff'
   #
   # class_option :swagger, type: :boolean, default: true, desc: 'Generate Swagger documentation'
-  #
-  # class_option :backoffice, type: :boolean, default: true, desc: 'Generate Backoffice'
-  #
+
+  class_option :backoffice, type: :boolean, default: true, desc: 'Generate Backoffice'
+
   # class_option :backoffice_users, type: :boolean, default: true, desc: 'Generate Backoffice users'
 
   class_option :rspec, type: :boolean, default: true, desc: 'Generate RSpec specs'
 
-  def copy_base_views
+  def create_api_base_views
     if options[:base]
       copy_file 'app/views/api/base/index.json.erb', 'app/views/api/base/index.json.erb'
       copy_file 'app/views/api/base/show.json.erb', 'app/views/api/base/show.json.erb'
@@ -34,7 +36,18 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def copy_user_model
+  def create_backoffice_base_views
+    if options[:backoffice]
+      copy_file 'app/views/backoffice/base/index.json.erb', 'app/views/backoffice/base/index.json.erb'
+      copy_file 'app/views/backoffice/base/show.json.erb', 'app/views/backoffice/base/show.json.erb'
+      copy_file 'app/views/backoffice/base/create.json.erb', 'app/views/backoffice/base/create.json.erb'
+      copy_file 'app/views/backoffice/base/update.json.erb', 'app/views/backoffice/base/update.json.erb'
+      copy_file 'app/views/backoffice/base/errors.json.erb', 'app/views/backoffice/base/errors.json.erb'
+      copy_file 'app/views/backoffice/base/exception.json.erb', 'app/views/backoffice/base/exception.json.erb'
+    end
+  end
+
+  def create_api_models
     if options[:base]
       copy_file 'app/models/user.rb', 'app/models/user.rb'
       copy_file 'app/decorators/user_decorator.rb', 'app/decorators/user_decorator.rb'
@@ -49,7 +62,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_base_controller
+  def create_api_base_controller
     if options[:base]
       template('app/controllers/api/base_controller.rb.erb', 'app/controllers/api/base_controller.rb')
       if options[:rspec]
@@ -59,28 +72,4 @@ class TheBulletGenerator < Rails::Generators::Base
       end
     end
   end
-
-  # def generate_base_controller
-  #   puts "generate base controller"
-  # end
-  #
-  # def generate_sign_ups_controller
-  #   puts "generate sign ups controller"
-  # end
-  #
-  # def generate_sign_ins_controller
-  #   puts "generate sign ins controller"
-  # end
-  #
-  # def generate_sign_outs_controller
-  #   puts "generate sign outs controller"
-  # end
-  #
-  # def generate_pundit
-  #   puts "generate pundit stuff"
-  # end
-  #
-  # def swagger
-  #   puts "generate swagger stuff"
-  # end
 end
