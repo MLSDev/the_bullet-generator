@@ -47,16 +47,23 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_api_models
+  def create_api_base_models
     if options[:base]
       copy_file 'app/models/user.rb', 'app/models/user.rb'
-      copy_file 'app/decorators/user_decorator.rb', 'app/decorators/user_decorator.rb'
       copy_file 'app/models/session.rb', 'app/models/session.rb'
-      copy_file 'app/decorators/session_decorator.rb', 'app/decorators/session_decorator.rb'
       if options[:rspec]
         copy_file 'spec/models/user_spec.rb', 'spec/models/user_spec.rb'
-        copy_file 'spec/decorators/user_decorator_spec.rb', 'spec/decorators/user_decorator_spec.rb'
         copy_file 'spec/models/session_spec.rb', 'spec/models/session_spec.rb'
+      end
+    end
+  end
+
+  def create_api_base_decorators
+    if options[:base]
+      copy_file 'app/decorators/user_decorator.rb', 'app/decorators/user_decorator.rb'
+      copy_file 'app/decorators/session_decorator.rb', 'app/decorators/session_decorator.rb'
+      if options[:rspec]
+        copy_file 'spec/decorators/user_decorator_spec.rb', 'spec/decorators/user_decorator_spec.rb'
         copy_file 'spec/decorators/session_decorator_spec.rb', 'spec/decorators/session_decorator_spec.rb'
       end
     end
