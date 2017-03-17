@@ -21,7 +21,7 @@ class TheBulletGenerator < Rails::Generators::Base
 
   class_option :backoffice, type: :boolean, default: true, desc: 'Generate Backoffice'
 
-  class_option :backoffice_user_management, type: :boolean, default: true, desc: 'Generate Backoffice users'
+  class_option :backoffice_users_management, type: :boolean, default: true, desc: 'Generate Backoffice users'
 
   class_option :rspec, type: :boolean, default: true, desc: 'Generate RSpec specs'
 
@@ -139,8 +139,8 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_users_controller
-    if options[:backoffice] && options[:backoffice_user_management]
+  def create_backoffice_users_management
+    if options[:backoffice] && options[:backoffice_users_management]
       copy_file 'app/models/backoffice/user.rb', 'app/models/backoffice/user.rb'
       copy_file 'app/decorators/backoffice/user_decorator.rb', 'app/decorators/backoffice/user_decorator.rb'
       copy_file 'app/controllers/backoffice/users_controller.rb', 'app/controllers/backoffice/users_controller.rb'
