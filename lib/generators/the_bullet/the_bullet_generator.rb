@@ -78,6 +78,8 @@ class TheBulletGenerator < Rails::Generators::Base
         copy_file 'spec/models/backoffice_spec.rb', 'spec/models/backoffice_spec.rb'
         copy_file 'spec/models/backoffice/superuser_spec.rb', 'spec/models/backoffice/superuser_spec.rb'
         copy_file 'spec/models/backoffice/session_spec.rb', 'spec/models/backoffice/session_spec.rb'
+        copy_file 'spec/factories/backoffice/superusers.rb', 'spec/factories/backoffice/superusers.rb'
+        copy_file 'spec/factories/backoffice/sessions.rb', 'spec/factories/backoffice/sessions.rb'
       end
     end
   end
