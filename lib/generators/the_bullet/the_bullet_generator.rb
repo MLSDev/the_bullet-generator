@@ -115,7 +115,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_sign_ins_controller
+  def create_backoffice_sign_ins
     if options[:backoffice]
       copy_file 'app/controllers/backoffice/sign_ins_controller.rb', 'app/controllers/backoffice/sign_ins_controller.rb'
       copy_file 'app/services/backoffice/sign_in.rb', 'app/services/backoffice/sign_in.rb'
@@ -127,7 +127,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_sign_outs_controller
+  def create_backoffice_sign_outs
     if options[:backoffice]
       copy_file 'app/controllers/backoffice/sign_outs_controller.rb', 'app/controllers/backoffice/sign_outs_controller.rb'
       copy_file 'app/services/backoffice/sign_out.rb', 'app/services/backoffice/sign_out.rb'
