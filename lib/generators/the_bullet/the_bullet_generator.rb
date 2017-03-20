@@ -25,7 +25,7 @@ class TheBulletGenerator < Rails::Generators::Base
 
   class_option :rspec, type: :boolean, default: true, desc: 'Generate RSpec specs'
 
-  def create_api_base_views
+  def api_base_views
     if options[:base]
       copy_file 'app/views/api/base/index.json.erb', 'app/views/api/base/index.json.erb'
       copy_file 'app/views/api/base/show.json.erb', 'app/views/api/base/show.json.erb'
@@ -34,17 +34,6 @@ class TheBulletGenerator < Rails::Generators::Base
       copy_file 'app/views/api/base/errors.json.erb', 'app/views/api/base/errors.json.erb'
       copy_file 'app/views/api/base/exception.json.erb', 'app/views/api/base/exception.json.erb'
     end
-  end
-
-  def create_backoffice_base_views
-    return unless options[:backoffice]
-
-    copy_file 'app/views/backoffice/base/index.json.erb', 'app/views/backoffice/base/index.json.erb'
-    copy_file 'app/views/backoffice/base/show.json.erb', 'app/views/backoffice/base/show.json.erb'
-    copy_file 'app/views/backoffice/base/create.json.erb', 'app/views/backoffice/base/create.json.erb'
-    copy_file 'app/views/backoffice/base/update.json.erb', 'app/views/backoffice/base/update.json.erb'
-    copy_file 'app/views/backoffice/base/errors.json.erb', 'app/views/backoffice/base/errors.json.erb'
-    copy_file 'app/views/backoffice/base/exception.json.erb', 'app/views/backoffice/base/exception.json.erb'
   end
 
   def create_api_base_models
@@ -78,6 +67,17 @@ class TheBulletGenerator < Rails::Generators::Base
         template('spec/controllers/api/base_controller_spec.rb.erb', 'spec/controllers/api/base_controller_spec.rb')
       end
     end
+  end
+
+  def backoffice_base_views
+    return unless options[:backoffice]
+
+    copy_file 'app/views/backoffice/base/index.json.erb', 'app/views/backoffice/base/index.json.erb'
+    copy_file 'app/views/backoffice/base/show.json.erb', 'app/views/backoffice/base/show.json.erb'
+    copy_file 'app/views/backoffice/base/create.json.erb', 'app/views/backoffice/base/create.json.erb'
+    copy_file 'app/views/backoffice/base/update.json.erb', 'app/views/backoffice/base/update.json.erb'
+    copy_file 'app/views/backoffice/base/errors.json.erb', 'app/views/backoffice/base/errors.json.erb'
+    copy_file 'app/views/backoffice/base/exception.json.erb', 'app/views/backoffice/base/exception.json.erb'
   end
 
   def backoffice_base
