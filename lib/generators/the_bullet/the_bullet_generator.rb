@@ -106,50 +106,50 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_base_controller
-    if options[:backoffice]
-      copy_file 'app/controllers/backoffice/base_controller.rb', 'app/controller/backoffice/base_controller.rb'
-      if options[:rspec]
-        copy_file 'spec/controllers/backoffice/base_controller_spec.rb', 'spec/controllers/backoffice/base_controller_spec.rb'
-      end
+  def create_backoffice_base
+    return unless options[:backoffice]
+
+    copy_file 'app/controllers/backoffice/base_controller.rb', 'app/controller/backoffice/base_controller.rb'
+    if options[:rspec]
+      copy_file 'spec/controllers/backoffice/base_controller_spec.rb', 'spec/controllers/backoffice/base_controller_spec.rb'
     end
   end
 
   def create_backoffice_sign_ins
-    if options[:backoffice]
-      copy_file 'app/controllers/backoffice/sign_ins_controller.rb', 'app/controllers/backoffice/sign_ins_controller.rb'
-      copy_file 'app/services/backoffice/sign_in.rb', 'app/services/backoffice/sign_in.rb'
-      if options[:rspec]
-        copy_file 'spec/controllers/backoffice/sign_ins_controller_spec.rb', 'spec/controllers/backoffice/sign_ins_controller_spec.rb'
-        copy_file 'spec/services/backoffice/sign_in_spec.rb', 'spec/services/backoffice/sign_in_spec.rb'
-        copy_file 'spec/spec/routing/backoffice/sign_ins_routing_spec.rb', 'spec/spec/routing/backoffice/sign_ins_routing_spec.rb'
-      end
+    return unless options[:backoffice]
+
+    copy_file 'app/controllers/backoffice/sign_ins_controller.rb', 'app/controllers/backoffice/sign_ins_controller.rb'
+    copy_file 'app/services/backoffice/sign_in.rb', 'app/services/backoffice/sign_in.rb'
+    if options[:rspec]
+      copy_file 'spec/controllers/backoffice/sign_ins_controller_spec.rb', 'spec/controllers/backoffice/sign_ins_controller_spec.rb'
+      copy_file 'spec/services/backoffice/sign_in_spec.rb', 'spec/services/backoffice/sign_in_spec.rb'
+      copy_file 'spec/spec/routing/backoffice/sign_ins_routing_spec.rb', 'spec/spec/routing/backoffice/sign_ins_routing_spec.rb'
     end
   end
 
   def create_backoffice_sign_outs
-    if options[:backoffice]
-      copy_file 'app/controllers/backoffice/sign_outs_controller.rb', 'app/controllers/backoffice/sign_outs_controller.rb'
-      copy_file 'app/services/backoffice/sign_out.rb', 'app/services/backoffice/sign_out.rb'
-      if options[:rspec]
-        copy_file 'spec/controllers/backoffice/sign_outs_controller_spec.rb', 'spec/controllers/backoffice/sign_outs_controller_spec.rb'
-        copy_file 'spec/services/backoffice/sign_out_spec.rb', 'spec/services/backoffice/sign_out_spec.rb'
-        copy_file 'spec/spec/routing/backoffice/sign_outs_routing_spec.rb', 'spec/spec/routing/backoffice/sign_outs_routing_spec.rb'
-      end
+    return unless options[:backoffice]
+
+    copy_file 'app/controllers/backoffice/sign_outs_controller.rb', 'app/controllers/backoffice/sign_outs_controller.rb'
+    copy_file 'app/services/backoffice/sign_out.rb', 'app/services/backoffice/sign_out.rb'
+    if options[:rspec]
+      copy_file 'spec/controllers/backoffice/sign_outs_controller_spec.rb', 'spec/controllers/backoffice/sign_outs_controller_spec.rb'
+      copy_file 'spec/services/backoffice/sign_out_spec.rb', 'spec/services/backoffice/sign_out_spec.rb'
+      copy_file 'spec/spec/routing/backoffice/sign_outs_routing_spec.rb', 'spec/spec/routing/backoffice/sign_outs_routing_spec.rb'
     end
   end
 
   def create_backoffice_users_management
-    if options[:backoffice] && options[:backoffice_users_management]
-      copy_file 'app/models/backoffice/user.rb', 'app/models/backoffice/user.rb'
-      copy_file 'app/decorators/backoffice/user_decorator.rb', 'app/decorators/backoffice/user_decorator.rb'
-      copy_file 'app/controllers/backoffice/users_controller.rb', 'app/controllers/backoffice/users_controller.rb'
-      if options[:rspec]
-        copy_file 'spec/models/backoffice/user_spec.rb', 'spec/models/backoffice/user_spec.rb'
-        copy_file 'spec/decorators/backoffice/user_decorator_spec.rb', 'spec/decorators/backoffice/user_decorator_spec.rb'
-        copy_file 'spec/controllers/backoffice/users_controller_spec.rb', 'spec/controllers/backoffice/users_controller.rb'
-        copy_file 'spec/spec/routing/backoffice/users_routing_spec.rb', 'spec/spec/routing/backoffice/users_routing_spec.rb'
-      end
+    return unless options[:backoffice] && options[:backoffice_users_management]
+
+    copy_file 'app/models/backoffice/user.rb', 'app/models/backoffice/user.rb'
+    copy_file 'app/decorators/backoffice/user_decorator.rb', 'app/decorators/backoffice/user_decorator.rb'
+    copy_file 'app/controllers/backoffice/users_controller.rb', 'app/controllers/backoffice/users_controller.rb'
+    if options[:rspec]
+      copy_file 'spec/models/backoffice/user_spec.rb', 'spec/models/backoffice/user_spec.rb'
+      copy_file 'spec/decorators/backoffice/user_decorator_spec.rb', 'spec/decorators/backoffice/user_decorator_spec.rb'
+      copy_file 'spec/controllers/backoffice/users_controller_spec.rb', 'spec/controllers/backoffice/users_controller.rb'
+      copy_file 'spec/spec/routing/backoffice/users_routing_spec.rb', 'spec/spec/routing/backoffice/users_routing_spec.rb'
     end
   end
 end
