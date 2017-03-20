@@ -69,32 +69,6 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_models
-    return unless options[:backoffice]
-
-    copy_file 'app/models/backoffice.rb', 'app/models/backoffice.rb'
-    copy_file 'app/models/backoffice/superuser.rb', 'app/models/backoffice/superuser.rb'
-    copy_file 'app/models/backoffice/session.rb', 'app/models/backoffice/session.rb'
-    if options[:rspec]
-      copy_file 'spec/models/backoffice_spec.rb', 'spec/models/backoffice_spec.rb'
-      copy_file 'spec/models/backoffice/superuser_spec.rb', 'spec/models/backoffice/superuser_spec.rb'
-      copy_file 'spec/models/backoffice/session_spec.rb', 'spec/models/backoffice/session_spec.rb'
-      copy_file 'spec/factories/backoffice/superusers.rb', 'spec/factories/backoffice/superusers.rb'
-      copy_file 'spec/factories/backoffice/sessions.rb', 'spec/factories/backoffice/sessions.rb'
-    end
-  end
-
-  def create_backoffice_decorators
-    return unless options[:backoffice]
-
-    # copy_file 'app/decorators/backoffice/superuser_decorator.rb', 'app/decorators/backoffice/superuser_decorator.rb'
-    copy_file 'app/decorators/backoffice/session_decorator.rb', 'app/decorators/backoffice/session_decorator.rb'
-    if options[:rspec]
-      # copy_file 'spec/decorators/backoffice/superuser_decorator_spec.rb', 'spec/decorators/backoffice/superuser_decorator_spec.rb'
-      copy_file 'spec/decorators/backoffice/session_decorator_spec.rb', 'spec/decorators/backoffice/session_decorator.rb'
-    end
-  end
-
   def create_api_base_controller
     if options[:base]
       template('app/controllers/api/base_controller.rb.erb', 'app/controllers/api/base_controller.rb')
@@ -115,11 +89,39 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
+  def create_backoffice_models
+    return unless options[:backoffice]
+
+    copy_file 'app/models/backoffice.rb', 'app/models/backoffice.rb'
+    copy_file 'app/models/backoffice/superuser.rb', 'app/models/backoffice/superuser.rb'
+    copy_file 'app/models/backoffice/session.rb', 'app/models/backoffice/session.rb'
+
+    if options[:rspec]
+      copy_file 'spec/models/backoffice_spec.rb', 'spec/models/backoffice_spec.rb'
+      copy_file 'spec/models/backoffice/superuser_spec.rb', 'spec/models/backoffice/superuser_spec.rb'
+      copy_file 'spec/models/backoffice/session_spec.rb', 'spec/models/backoffice/session_spec.rb'
+      copy_file 'spec/factories/backoffice/superusers.rb', 'spec/factories/backoffice/superusers.rb'
+      copy_file 'spec/factories/backoffice/sessions.rb', 'spec/factories/backoffice/sessions.rb'
+    end
+  end
+
+  def create_backoffice_decorators
+    return unless options[:backoffice]
+  
+    # copy_file 'app/decorators/backoffice/superuser_decorator.rb', 'app/decorators/backoffice/superuser_decorator.rb'
+    copy_file 'app/decorators/backoffice/session_decorator.rb', 'app/decorators/backoffice/session_decorator.rb'
+    if options[:rspec]
+      # copy_file 'spec/decorators/backoffice/superuser_decorator_spec.rb', 'spec/decorators/backoffice/superuser_decorator_spec.rb'
+      copy_file 'spec/decorators/backoffice/session_decorator_spec.rb', 'spec/decorators/backoffice/session_decorator.rb'
+    end
+  end
+
   def create_backoffice_sign_ins
     return unless options[:backoffice]
 
     copy_file 'app/controllers/backoffice/sign_ins_controller.rb', 'app/controllers/backoffice/sign_ins_controller.rb'
     copy_file 'app/services/backoffice/sign_in.rb', 'app/services/backoffice/sign_in.rb'
+
     if options[:rspec]
       copy_file 'spec/controllers/backoffice/sign_ins_controller_spec.rb', 'spec/controllers/backoffice/sign_ins_controller_spec.rb'
       copy_file 'spec/services/backoffice/sign_in_spec.rb', 'spec/services/backoffice/sign_in_spec.rb'
@@ -132,6 +134,7 @@ class TheBulletGenerator < Rails::Generators::Base
 
     copy_file 'app/controllers/backoffice/sign_outs_controller.rb', 'app/controllers/backoffice/sign_outs_controller.rb'
     copy_file 'app/services/backoffice/sign_out.rb', 'app/services/backoffice/sign_out.rb'
+
     if options[:rspec]
       copy_file 'spec/controllers/backoffice/sign_outs_controller_spec.rb', 'spec/controllers/backoffice/sign_outs_controller_spec.rb'
       copy_file 'spec/services/backoffice/sign_out_spec.rb', 'spec/services/backoffice/sign_out_spec.rb'
@@ -145,6 +148,7 @@ class TheBulletGenerator < Rails::Generators::Base
     copy_file 'app/models/backoffice/user.rb', 'app/models/backoffice/user.rb'
     copy_file 'app/decorators/backoffice/user_decorator.rb', 'app/decorators/backoffice/user_decorator.rb'
     copy_file 'app/controllers/backoffice/users_controller.rb', 'app/controllers/backoffice/users_controller.rb'
+
     if options[:rspec]
       copy_file 'spec/models/backoffice/user_spec.rb', 'spec/models/backoffice/user_spec.rb'
       copy_file 'spec/decorators/backoffice/user_decorator_spec.rb', 'spec/decorators/backoffice/user_decorator_spec.rb'
