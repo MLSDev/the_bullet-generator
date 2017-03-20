@@ -37,14 +37,14 @@ class TheBulletGenerator < Rails::Generators::Base
   end
 
   def create_backoffice_base_views
-    if options[:backoffice]
-      copy_file 'app/views/backoffice/base/index.json.erb', 'app/views/backoffice/base/index.json.erb'
-      copy_file 'app/views/backoffice/base/show.json.erb', 'app/views/backoffice/base/show.json.erb'
-      copy_file 'app/views/backoffice/base/create.json.erb', 'app/views/backoffice/base/create.json.erb'
-      copy_file 'app/views/backoffice/base/update.json.erb', 'app/views/backoffice/base/update.json.erb'
-      copy_file 'app/views/backoffice/base/errors.json.erb', 'app/views/backoffice/base/errors.json.erb'
-      copy_file 'app/views/backoffice/base/exception.json.erb', 'app/views/backoffice/base/exception.json.erb'
-    end
+    return unless options[:backoffice]
+
+    copy_file 'app/views/backoffice/base/index.json.erb', 'app/views/backoffice/base/index.json.erb'
+    copy_file 'app/views/backoffice/base/show.json.erb', 'app/views/backoffice/base/show.json.erb'
+    copy_file 'app/views/backoffice/base/create.json.erb', 'app/views/backoffice/base/create.json.erb'
+    copy_file 'app/views/backoffice/base/update.json.erb', 'app/views/backoffice/base/update.json.erb'
+    copy_file 'app/views/backoffice/base/errors.json.erb', 'app/views/backoffice/base/errors.json.erb'
+    copy_file 'app/views/backoffice/base/exception.json.erb', 'app/views/backoffice/base/exception.json.erb'
   end
 
   def create_api_base_models
@@ -70,28 +70,28 @@ class TheBulletGenerator < Rails::Generators::Base
   end
 
   def create_backoffice_models
-    if options[:backoffice]
-      copy_file 'app/models/backoffice.rb', 'app/models/backoffice.rb'
-      copy_file 'app/models/backoffice/superuser.rb', 'app/models/backoffice/superuser.rb'
-      copy_file 'app/models/backoffice/session.rb', 'app/models/backoffice/session.rb'
-      if options[:rspec]
-        copy_file 'spec/models/backoffice_spec.rb', 'spec/models/backoffice_spec.rb'
-        copy_file 'spec/models/backoffice/superuser_spec.rb', 'spec/models/backoffice/superuser_spec.rb'
-        copy_file 'spec/models/backoffice/session_spec.rb', 'spec/models/backoffice/session_spec.rb'
-        copy_file 'spec/factories/backoffice/superusers.rb', 'spec/factories/backoffice/superusers.rb'
-        copy_file 'spec/factories/backoffice/sessions.rb', 'spec/factories/backoffice/sessions.rb'
-      end
+    return unless options[:backoffice]
+
+    copy_file 'app/models/backoffice.rb', 'app/models/backoffice.rb'
+    copy_file 'app/models/backoffice/superuser.rb', 'app/models/backoffice/superuser.rb'
+    copy_file 'app/models/backoffice/session.rb', 'app/models/backoffice/session.rb'
+    if options[:rspec]
+      copy_file 'spec/models/backoffice_spec.rb', 'spec/models/backoffice_spec.rb'
+      copy_file 'spec/models/backoffice/superuser_spec.rb', 'spec/models/backoffice/superuser_spec.rb'
+      copy_file 'spec/models/backoffice/session_spec.rb', 'spec/models/backoffice/session_spec.rb'
+      copy_file 'spec/factories/backoffice/superusers.rb', 'spec/factories/backoffice/superusers.rb'
+      copy_file 'spec/factories/backoffice/sessions.rb', 'spec/factories/backoffice/sessions.rb'
     end
   end
 
   def create_backoffice_decorators
-    if options[:backoffice]
-      # copy_file 'app/decorators/backoffice/superuser_decorator.rb', 'app/decorators/backoffice/superuser_decorator.rb'
-      copy_file 'app/decorators/backoffice/session_decorator.rb', 'app/decorators/backoffice/session_decorator.rb'
-      if options[:rspec]
-        # copy_file 'spec/decorators/backoffice/superuser_decorator_spec.rb', 'spec/decorators/backoffice/superuser_decorator_spec.rb'
-        copy_file 'spec/decorators/backoffice/session_decorator_spec.rb', 'spec/decorators/backoffice/session_decorator.rb'
-      end
+    return unless options[:backoffice]
+
+    # copy_file 'app/decorators/backoffice/superuser_decorator.rb', 'app/decorators/backoffice/superuser_decorator.rb'
+    copy_file 'app/decorators/backoffice/session_decorator.rb', 'app/decorators/backoffice/session_decorator.rb'
+    if options[:rspec]
+      # copy_file 'spec/decorators/backoffice/superuser_decorator_spec.rb', 'spec/decorators/backoffice/superuser_decorator_spec.rb'
+      copy_file 'spec/decorators/backoffice/session_decorator_spec.rb', 'spec/decorators/backoffice/session_decorator.rb'
     end
   end
 
