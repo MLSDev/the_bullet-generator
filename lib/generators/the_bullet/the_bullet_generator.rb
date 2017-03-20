@@ -80,7 +80,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_base
+  def backoffice_base
     return unless options[:backoffice]
 
     copy_file 'app/controllers/backoffice/base_controller.rb', 'app/controller/backoffice/base_controller.rb'
@@ -89,7 +89,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_models
+  def backoffice_models
     return unless options[:backoffice]
 
     copy_file 'app/models/backoffice.rb', 'app/models/backoffice.rb'
@@ -105,7 +105,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_decorators
+  def backoffice_decorators
     return unless options[:backoffice]
   
     # copy_file 'app/decorators/backoffice/superuser_decorator.rb', 'app/decorators/backoffice/superuser_decorator.rb'
@@ -116,7 +116,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_sign_ins
+  def backoffice_sign_ins
     return unless options[:backoffice]
 
     copy_file 'app/controllers/backoffice/sign_ins_controller.rb', 'app/controllers/backoffice/sign_ins_controller.rb'
@@ -129,7 +129,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_sign_outs
+  def backoffice_sign_outs
     return unless options[:backoffice]
 
     copy_file 'app/controllers/backoffice/sign_outs_controller.rb', 'app/controllers/backoffice/sign_outs_controller.rb'
@@ -142,7 +142,7 @@ class TheBulletGenerator < Rails::Generators::Base
     end
   end
 
-  def create_backoffice_users_management
+  def backoffice_users_management
     return unless options[:backoffice] && options[:backoffice_users_management]
 
     copy_file 'app/models/backoffice/user.rb', 'app/models/backoffice/user.rb'
