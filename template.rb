@@ -61,4 +61,27 @@ end
 gem_group :development do
   # rubocop version locked due config. Update rubocop config on gem update.
   gem 'rubocop', '0.47.1', require: false
+
+  gem 'the_bullet-generator', path: '/Users/biow0lf/opensource/MLSDev/the_bullet-generator'
 end
+
+git :init
+git add: '.'
+git commit: '-m Init'
+
+after_bundle do
+  git add: '.'
+  git commit: '-m "Add Gemfile.lock and other stuff"'
+end
+
+capify!
+
+opts = ['--base', '--backoffice', '--backoffice-users-management']
+
+if rspec
+  opts << '--rspec'
+else
+  opts << '--no-rspec'
+end
+
+generate(:the_bullet, *opts)
